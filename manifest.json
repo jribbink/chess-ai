@@ -33,6 +33,7 @@
     "assets/icons/*.png"
   ],
   "permissions": [
-    "*://*/*"
+    "*://*/*",
+    "tabs"
   ]
 }

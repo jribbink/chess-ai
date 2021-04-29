@@ -18,15 +18,20 @@ var config = {
                 ]
             },
             {
-                test: /\.html$/,
-                loader: 'html-loader'
+                test: /\.ts?$/,
+                use: {
+                    loader: "ts-loader"
+                }
             }
         ]
     },
     plugins: [
         // make sure to include the plugin!
         new VueLoaderPlugin()
-    ]
+    ],
+    resolve: {
+        extensions: [".ts", ".tsx", ".js"]
+    }
 };
 
 var backgroundConfig = Object.assign({}, config, {
@@ -51,26 +56,6 @@ var devtoolsConfig = Object.assign({}, config, {
     output: {
        path: path.resolve("./dist/devtools"),
        filename: "index.js"
-    },
-    module: {
-        rules: [
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader'
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    'vue-style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ]
-            },
-            {
-                test: /\.html$/,
-                loader: 'html-loader'
-            }
-        ]
     },
     plugins: [
         new HtmlWebpackPlugin({
